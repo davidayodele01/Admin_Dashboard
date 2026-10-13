@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 import logo from "../../assets/logo.jpeg";
 
-// This is reusable that is why the object are inside the function
 const ChartBox = ({
   color = "#38bdf8",
   icon,
@@ -13,9 +12,9 @@ const ChartBox = ({
   chartData = [],
 }) => {
   return (
-    <div className="flex justify-between items-center p-[10px] bg-[#0F2537] text-white rounded-lg shadow-md w-full h-full  min-h-[160px]">
+    <div className="flex justify-between items-center p-[12px] bg-[#0F2537] text-white rounded-lg shadow-md w-full h-full min-h-[160px]">
       {/* Left Side: Info */}
-      <div className="flex flex-col justify-between h-full gap-3 ">
+      <div className="flex flex-col justify-between h-full gap-3">
         {/* Left top */}
         <div className="flex items-center gap-2">
           <img
@@ -30,7 +29,6 @@ const ChartBox = ({
         <h1 className="text-2xl font-semibold tracking-tight">{number}</h1>
 
         {/* Left bottom */}
-        {/* Link is use to navigate pages, a property of react-router-dom */}
         <Link
           to="/"
           style={{ color }}
@@ -41,23 +39,23 @@ const ChartBox = ({
       </div>
 
       {/* Right Side: Chart & Stats */}
-      <div className="flex flex-col items-end justify-between h-full gap-2 w-1/3 pt-[8px] pb-[4px]">
-        {/* LineChart Container - w-full allows ResponsiveContainer to scale properly */}
-        <div className="min-w-[100px] max-w-[150px] h-[50px]">
+      <div className="flex flex-col items-end justify-between h-full gap-2 w-1/2 pt-[8px] pb-[4px]">
+        {/* LineChart Container - w-full with explicit height ensures ResponsiveContainer measures correctly */}
+        <div className="w-full h-[50px] min-w-[100px]">
           {chartData && chartData.length > 0 ? (
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#eff0f3",
-                    border: "none",
-                    borderRadius: "4px",
+                    backgroundColor: "#1e293b",
+                    border: "1px solid #334155",
+                    borderRadius: "6px",
                     fontSize: "12px",
                     padding: "4px 8px",
-                    color: "#f8f3f3",
+                    color: "#f8fafc",
                   }}
-                  itemStyle={{ color: "#fff" }}
-                  position={{ y: -30 }}
+                  itemStyle={{ color: color }}
+                  position={{ y: -35 }}
                   labelStyle={{ display: "none" }}
                 />
                 <Line
@@ -66,6 +64,7 @@ const ChartBox = ({
                   stroke={color}
                   strokeWidth={2}
                   dot={false}
+                  isAnimationActive={true}
                 />
               </LineChart>
             </ResponsiveContainer>
