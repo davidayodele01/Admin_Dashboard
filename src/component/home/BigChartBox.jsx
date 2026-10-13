@@ -6,7 +6,7 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "rec
 const data = [
   {
     name: "Sun",
-    book: 4000,
+    book: 4060,
     clothes: 2400,
     electronic: 2400,
   },
